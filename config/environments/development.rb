@@ -64,6 +64,6 @@ Rails.application.configure do
   config.action_mailer.mailgun_settings = {
       api_key: '<mailgun api key>',
       domain: '<mailgun domain>',
-      :address => "localhost", :port => 102
+      address: "localhost", port: 102
   }
 end
