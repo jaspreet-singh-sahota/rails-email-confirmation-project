@@ -89,20 +89,15 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'email-comfirmation.herokuapp.com', :protocol => 'https'}
 
-  host = ENV["APP_HOST_NAME"]
-
-  ActionMailer::Base.smtp_settings = { 
-    port: ENV['MAILGUN_SMTP_PORT'],
-    address: ENV['MAILGUN_SMTP_SERVER'],
-    user_name: ENV['MAILGUN_SMTP_LOGIN'],
-    password: ENV['MAILGUN_SMTP_PASSWORD'],
-    domain: host,
-    authentication: :plain,
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+      api_key: '<mailgun api key>',
+      domain: '<mailgun domain>'
+      :host => 'email-comfirmation.herokuapp.com', :protocol => 'https'
   }
 
-  config.action_mailer.default_url_options = { :host => 'email-comfirmation.herokuapp.com', :protocol => 'https'}
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
