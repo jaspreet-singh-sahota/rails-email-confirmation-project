@@ -89,13 +89,14 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { :host => 'email-comfirmation.herokuapp.com', :protocol => 'https'}
-
+  
   config.action_mailer.delivery_method = :mailgun
+
+  ## Settings
   config.action_mailer.mailgun_settings = {
-      api_key: '<mailgun api key>',
-      domain: '<mailgun domain>',
-      host: 'email-comfirmation.herokuapp.com', :protocol => 'https'
+    domain:       ENV['MAILGUN_DOMAIN'],
+    api_key:      ENV['MAILGUN_API_KEY'],       
+    api_base_url: ENV['MAILGUN_API_BASE_URL']   ## api.mailgun.net/v3
   }
 
 
