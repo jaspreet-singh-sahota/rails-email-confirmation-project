@@ -90,14 +90,15 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   
-  config.action_mailer.delivery_method = :mailgun
-
-  ## Settings
-  config.action_mailer.mailgun_settings = {
-    domain:       ENV['MAILGUN_DOMAIN'],
-    api_key:      ENV['MAILGUN_API_KEY'],       
-    api_base_url: ENV['MAILGUN_API_BASE_URL']   ## api.mailgun.net/v3
+  ActionMailer::Base.smtp_settings = {
+    :port           => ENV['MAILGUN_SMTP_PORT'],
+    :address        => ENV['MAILGUN_SMTP_SERVER'],
+    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+    :domain         => 'email-comfirmationp.heroku.com',
+    :authentication => :plain,
   }
+  ActionMailer::Base.delivery_method = :smtp
 
 
   # Inserts middleware to perform automatic connection switching.
