@@ -223,13 +223,13 @@ module ActionView
       #
       #   favicon_link_tag 'mb-icon.png', rel: 'apple-touch-icon', type: 'image/png'
       #   # => <link href="/assets/mb-icon.png" rel="apple-touch-icon" type="image/png" />
-      def favicon_link_tag(source = "favicon.ico", options = {})
-        tag("link", {
-          rel: "shortcut icon",
-          type: "image/x-icon",
-          href: path_to_image(source, skip_pipeline: options.delete(:skip_pipeline))
-        }.merge!(options.symbolize_keys))
-      end
+      # def favicon_link_tag(source = "favicon.ico", options = {})
+      #   tag("link", {
+      #     rel: "shortcut icon",
+      #     type: "image/x-icon",
+      #     href: path_to_image(source, skip_pipeline: options.delete(:skip_pipeline))
+      #   }.merge!(options.symbolize_keys))
+      # end
 
       # Returns a link tag that browsers can use to preload the +source+.
       # The +source+ can be the path of a resource managed by asset pipeline,

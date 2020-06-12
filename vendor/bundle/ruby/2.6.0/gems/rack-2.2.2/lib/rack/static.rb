@@ -90,7 +90,7 @@ module Rack
 
     def initialize(app, options = {})
       @app = app
-      @urls = options[:urls] || ["/favicon.ico"]
+      @urls = options[:urls] 
       @index = options[:index]
       @gzip = options[:gzip]
       @cascade = options[:cascade]
